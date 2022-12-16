@@ -1,6 +1,5 @@
 
 
-;
 class Planet {
     constructor(squaredGridDimension = 10) {
         this.maxX = squaredGridDimension - 1;
@@ -41,27 +40,70 @@ class Obstacle {
     }
 }
 
-const start = () => {
-   const mars = new Planet;
-   const rover = new Rover;
-   
-   rover.move("b")
-   whereIsMyRover(rover)
-   rover.move("f")
-   whereIsMyRover(rover)
+const startMove = (rover) => {
+    const whereToGo = prompt("Plese let me know the direction, mars rover need to know it (ex : N or E or W or S):");
+    // const move = prompt("Choose if you want to move forward or move back ");
+     const direction = whereToGo.toUpperCase();
+     switch (direction) {
+         case 'N':
+             console.log(`you choose the ${direction} direction`);
+             rover.direction = direction;
+             break;
+             case 'E':
+                 console.log(`you choose the ${direction} direction`);
+                 rover.direction = direction;
+             break;
+                 case 'W':
+                     console.log(`you choose the ${direction} direction`);
+                     rover.direction = direction;
+             break;
+                     case 'S':
+                         console.log(`you choose the ${direction} direction`);
+                         rover.direction = direction;
+             break;
+     }
+     
+     whereIsMyRover(rover);
+     chooseMove(rover);
 }
+
+const chooseMove = (roverSelected ) => {
+     const move = prompt('Choose if you want to move forward or move back (type "F" move forward / type "B"  move back)');
+      const move2 = move.toUpperCase();
+      switch (move2) {
+          case 'F':
+              console.log(`you choose to move ${move2}`);
+              roverSelected.y = roverSelected.y +1;
+              break;
+              case 'B':
+              console.log(`you choose to move ${move2}`);
+              roverSelected.y = roverSelected.y +1;
+              break;
+              default:
+                alert(`Use the right command, insert F or B`);
+      }
+      whereIsMyRover(roverSelected);
+ }
+
+const checkPosition = () =>{
+
+
+}
+
+
 
 const whereIsMyRover  = (rover) => {
-    console.log(`Now the Rover is X:${rover.x}, Y: ${rover.y}, facing: ${rover.direction}`);
+    alert(`Now the Rover is X:${rover.x}, Y: ${rover.y}, facing: ${rover.direction}`);
 }
 
+const start = () => {
+    const rover = new Rover();
+    const mars = new Planet;
+    const obstacle = new Obstacle;
+    alert(`Welcome to Mars`)
+    startMove(rover);
+
+}
+
+
 start();
-
-
-
-/*
-
-1,1 N
-1, 2 N
-
-*/
