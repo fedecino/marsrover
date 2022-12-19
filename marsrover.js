@@ -1,9 +1,5 @@
 
-class EventEmitter {
-	constructor() {
-		this.events = {};
-	}
-}
+
 
 class Planet {
 	constructor(squaredGridDimension = 10) {
