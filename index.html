@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="marsrover.js"></script>
-    <title>Mars Rover</title>
-    
-    
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<title>Mars Rover</title>
+		<canvas
+			id="marsCanvas"
+			width="400"
+			height="400"
+			style="border: 1px solid #d3d3d3"
+			><img
+				id="mars"
+				src="https://d2pn8kiwq2w21t.cloudfront.net/original_images/imagesinsight20181031PIA22743-16.jpg"
+				width="400"
+				height="400"
+			/>
+		</canvas>
+		<div class="buttonContainer">
+			<button class="button" onclick="start()">Begin to explore Mars</button>
+		</div>
+	</head>
+	<div id="roverposition"></div>
+	<script type="text/javascript" src="marsrover.js"></script>
+	<body></body>
 </html>
