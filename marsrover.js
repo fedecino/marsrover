@@ -1,6 +1,4 @@
 
-
-
 class EventEmitter {
 	constructor() {
 		this.events = {};
@@ -21,9 +19,7 @@ class Rover {
 		this.direction = direction; //N S W E
 	}
 
-	move(number, roverX, roverY, roverDir, obstacle) {
-		console.log("number", number);
-		console.log("obstacle", obstacle);
+	move(number, roverX, roverY, roverDir) {
 		//planet limit
 		if (
 			(roverDir == "N" && roverY <= 0) ||
@@ -47,7 +43,7 @@ class Rover {
 		let position = new Rover(this.x, this.y, this.direction);
 
 		whereIsMyRover(position);
-		goOn(position, obstacle);
+		goOn(position);
 	}
 
 	turn = (turnDirection) => {
@@ -67,23 +63,16 @@ class Rover {
 	};
 }
 
-class Obstacle {
-	constructor(x = 2, y = 3) {
-		this.x = x;
-		this.y = y;
-	}
-}
-
-const startMove = (rover, obstacle) => {
+const startMove = (rover) => {
 	let whereToGo = prompt(
 		"Plese let me know the direction, mars rover need to know it (ex : N or E or W or S):"
 	);
 	rover.turn(whereToGo);
 	whereIsMyRover(rover);
-	chooseMove(rover, obstacle);
+	chooseMove(rover);
 };
 
-const chooseMove = (roverSelected, obstacle) => {
+const chooseMove = (roverSelected) => {
 	let forward = prompt("Choose how far you want to go (choose a number)");
 	let number = parseInt(forward);
 	console.log("valore di forward", number);
@@ -92,8 +81,7 @@ const chooseMove = (roverSelected, obstacle) => {
 		number,
 		roverSelected.x,
 		roverSelected.y,
-		roverSelected.direction,
-		obstacle
+		roverSelected.direction
 	);
 };
 
@@ -110,27 +98,21 @@ const whereIsMyRover = (rover) => {
 const startexplore = () => {
 	const rover = new Rover();
 	const mars = new Planet();
-	const obstacle = new Obstacle();
 	alert(`Welcome to Mars`);
-	alert(`Now your Mars Rover is in position X:0 , Y:0 ; Direction : `);
-	startMove(rover, obstacle);
+	alert(`Now your Mars Rover is in X:${rover.x}, Y: ${rover.y}, facing: ${rover.direction}`);
+	startMove(rover);
 };
 
-const goOn = (roverPosition, obstacle) => {
+const goOn = (roverPosition) => {
 	let continueExplore = confirm(
 		"Do you want to move one more time your mars rover?"
 	);
 	if (continueExplore) {
 		alert("Yeah, good choice ");
-		startMove(roverPosition, obstacle);
+		startMove(roverPosition);
 	} else {
 		alert("Ok, see you next time, enjoy Mars");
 	}
-};
-
-const onLoading = () => {
-	const rover = new Rover();
-	return rover;
 };
 
 const oppositeEdge = () => {
@@ -145,6 +127,5 @@ window.load = () => {
 	const ctx = c.getContext("2d");
 	ctx.drawImage(img, 1, 1);
 };
-
 
 window.load();
